@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Add your desired background color */
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333; /* Add your desired background color */
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 20px;
+        }
+
+        .form-container {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .output-container {
+            flex: 1;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        label, select, input, button {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Add any additional styling as needed */
+    </style>
+</head>
+<body>
+    <h1>Audio Translator</h1>
+    
+    <div class="container">
+
+        <!-- Left side for uploading file and choosing language -->
+        <div class="form-container">
+            <form method="post" enctype="multipart/form-data">
+                <label for="source_language">Source Language:</label>
+                <select name="source_language" id="source_language">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="kn">Kannada</option>
+                    <option value="te">Telugu</option>
+                </select>
+
+                <label for="target_language">Target Language:</label>
+                <select name="target_language" id="target_language">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="kn">Kannada</option>
+                    <option value="te">Telugu</option>
+                </select>
+
+                <label for="audio_file">Upload Audio:</label>
+                <input type="file" name="audio_file" accept="audio/*">
+                
+                <button type="submit">Translate</button>
+            </form>
+        </div>
+
+        <!-- Right side to display translated text -->
+        <div class="output-container">
+            {% if original_text %}
+                <h2>Original Text:</h2>
+                <p>{{ original_text }}</p>
+
+                <h2>Translated Text:</h2>
+                <p>{{ translated_text }}</p>
+            {% endif %}
+        </div>
+
+    </div>
+</body>
+</html>
